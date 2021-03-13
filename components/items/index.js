@@ -12,26 +12,25 @@ const ItemComponent = ({ item, listViews, setListViews }) => {
 
   useEffect(() => {
     if (!results) return;
+
     if (Array.isArray(results)) {
-      const newListViews = listViews.map((i) => {
-        if (i.name === item.name) {
-          return {
-            ...item,
-            isRender: true,
-          };
-        } else {
-          return {
-            ...item,
-            isRender: false,
-          };
-        }
-      });
-      setListViews(newListViews);
+      const index = listViews.findIndex((i) => i.name === item.name);
+      if (index !== -1) {
+        const assignArr = [...listViews];
+        assignArr[index].isRender = true;
+        setListViews(assignArr);
+      }
+    } else {
+      if (index !== -1) {
+        const assignArr = [...listViews];
+        assignArr[index].isRender = false;
+        setListViews(assignArr);
+      }
     }
   }, [results]);
 
   console.log("searching", searching);
-  console.log("results", results);
+  console.log(`results: ${item.name}`, results);
   return (
     <div>
       {searching && <>loading......</>}

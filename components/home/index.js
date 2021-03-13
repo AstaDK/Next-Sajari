@@ -1,4 +1,4 @@
-import { Pipeline, SearchProvider, Variables } from "@sajari/react-hooks";
+import { SearchProvider, Variables } from "@sajari/react-hooks";
 import { useState } from "react";
 import { pipelineConfig } from "../../config";
 import ItemComponent from "../items";
